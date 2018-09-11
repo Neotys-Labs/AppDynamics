@@ -19,7 +19,7 @@ public enum  Constants {
 		if (iconURL != null) {CUSTOM_ACTION_ICON = new ImageIcon(iconURL);}
 		else {CUSTOM_ACTION_ICON = null;}
 		final StringBuilder description = new StringBuilder();
-		description.append("AppDynamics Monitoring Action will retrieve all the counters specified in AppDynamics\n").append(
+		description.append("AppDynamics Monitoring Action will retrieve all the counters specified in AppDynamics.\n").append(
 				Arguments.getArgumentDescriptions(AppDynamicsOption.values()));
 		CUSTOM_ACTION_DESCRIPTION = description.toString();
 	}
