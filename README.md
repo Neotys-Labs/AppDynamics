@@ -13,6 +13,7 @@ This Advanced Action allows you to integrate [NeoLoad](https://www.neotys.com/ne
 | Author | Neotys |
 | License           | [BSD Simplified](https://www.neotys.com/documents/legal/bsd-neotys.txt) |
 | NeoLoad         | From version 6.3|
+| AppDynamics | Tested with versions 4.4 and 4.5
 | Requirements | <ul><li>License FREE edition, or Enterprise edition, or Professional with Integration & Advanced Usage</li><li>AppDynamics account with Infrastructures and Plugins</li></ul>|
 | Bundled in NeoLoad | No |
 | Download Binaries    | See the [latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest)|
@@ -105,8 +106,8 @@ Examples of AppDynamics configuration in NeoLoad:
 
 ## Analyse results in NeoLoad
 
-All the metrics retrieved from AppDynamics are available on the NeoLoad Controller (live during the test, and after the test is executed), in the **External Data** tab.
-
+- All the metrics retrieved from AppDynamics are available on the NeoLoad Controller (live during the test, and after the test is executed), in the **External Data** tab.
+- The most recent metric values sent from AppDynamics are still some minutes in the past compared to the current time. Some metric values are so missed at the end of NeoLoad tests.
 <p align="center"><img src="/screenshots/AppDynamicsNeoLoadExternalDataGraphs.png" alt="NeoLoad Graphs External Data" /></p>
 
 ## NeoLoad Error Codes
