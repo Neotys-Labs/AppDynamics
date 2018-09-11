@@ -37,13 +37,13 @@ Once installed, how to use in a given NeoLoad project:
 
 3. Select the **Actions** container and set a pacing duration of 60 seconds.
 
-<p align="center"><img src="/screenshots/ActionContainerPacing.png" alt="Action's Pacing" /></p>
+<p align="center"><img src="/screenshots/ActionsContainerPacing.png" alt="Action's Pacing" /></p>
 
 4. Select the **Actions** container and set the runtime parameters "Reset user session and emulate new browser between each iteration" to "No".
 
 <p align="center"><img src="/screenshots/ActionsContainerResetIterationNo.png" alt="Action's Runtime parameters" /></p>
 
-5. Create a Population "PopulationAppDynamics" which contains 100% of User Path "appdynamicsc".
+5. Create a Population "PopulationAppDynamics" which contains 100% of User Path "appdynamics".
 
 <p align="center"><img src="/screenshots/AppDynamicsPopulation.png" alt="AppDynamics Population" /></p>
 
