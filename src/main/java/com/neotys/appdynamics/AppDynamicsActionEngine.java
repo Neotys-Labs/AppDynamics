@@ -172,9 +172,13 @@ public class AppDynamicsActionEngine implements ActionEngine {
 
 	}
 
-	public static Optional<Proxy> getProxy(final Context context, final Optional<String> proxyName, final String url) throws MalformedURLException {
+	private static Optional<Proxy> getProxy(final Context context, final Optional<String> proxyName, final String url) throws MalformedURLException, AppDynamicsException {
 		if (proxyName.isPresent()) {
-			return Optional.of(context.getProxyByName(proxyName.get(), new URL(url)));
+			Proxy proxyByName = context.getProxyByName(proxyName.get(), new URL(url));
+			if(proxyByName == null){
+				throw new AppDynamicsException("Not able to retrieve proxy");
+			}
+			return Optional.of(proxyByName);
 		}
 		return Optional.absent();
 	}
