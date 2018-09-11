@@ -33,7 +33,8 @@ public class AppDynamicsActionArguments {
 		this.appDynamicAccountName = getArgumentValue(parsedArgs, AppDynamicsOption.AppDynamicsAccountName);
 		this.appDynamicUserName = getArgumentValue(parsedArgs, AppDynamicsOption.AppDynamicsUserName);
 		this.appDynamicPassword = getArgumentValue(parsedArgs, AppDynamicsOption.AppDynamicsPassword);
-		this.appDynamicMetricPaths = Optional.of(Splitter.on("\n").splitToList(parsedArgs.get(AppDynamicsOption.AppDynamicsMetricPaths.getName()).or("")));
+		this.appDynamicMetricPaths = Optional.of(Splitter.on("\n").omitEmptyStrings()
+				.splitToList(parsedArgs.get(AppDynamicsOption.AppDynamicsMetricPaths.getName()).or("")));
 		this.proxyName = getArgumentValue(parsedArgs, AppDynamicsOption.AppDynamicsProxyName);
 		this.dataExchangeApiKey = getArgumentValue(parsedArgs, AppDynamicsOption.NeoLoadDataExchangeApiKey);
 	}

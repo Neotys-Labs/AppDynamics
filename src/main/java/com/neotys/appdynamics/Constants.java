@@ -60,7 +60,7 @@ public enum  Constants {
 			"Application Infrastructure Performance|*|Hardware Resources|Network|Outgoing Errors" + "\n" +
 			"Application Infrastructure Performance|*|Hardware Resources|Disks|Reads/sec" + "\n" +
 			"Application Infrastructure Performance|*|Hardware Resources|Disks|Writes/sec" + "\n" +
-			"Application Infrastructure Performance|*|Agent|Business Transactions|*" + "\n";
+			"Application Infrastructure Performance|*|Agent|Business Transactions|*";
 
 	public static final String APP_DYNAMICS_REST_CLIENT = "AppDynamicsRestClient_%s_%s";
 
