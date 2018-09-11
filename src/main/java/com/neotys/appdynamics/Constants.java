@@ -6,7 +6,8 @@ import com.neotys.action.argument.Arguments;
 import javax.swing.*;
 import java.net.URL;
 
-public final class Constants {
+public enum  Constants {
+	;
 	public static final String CUSTOM_ACTION_TYPE = "AppDynamicsMonitoringAction";
 	public static final String APP_DYNAMICS = "AppDynamics";
 

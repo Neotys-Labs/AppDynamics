@@ -183,8 +183,9 @@ public class AppDynamicsActionEngine implements ActionEngine {
 		return Optional.absent();
 	}
 
+	@Override
 	public void stopExecute() {
-
+		//Nothing to do
 	}
 
 	private static SampleResult newErrorResult(final StringBuilder requestContentBuilder, final Context context, final String statusCode, final String statusMessage, final Optional<Exception> exception) {

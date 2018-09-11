@@ -25,6 +25,10 @@ import org.apache.http.message.BasicHeader;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +60,7 @@ public class AppDynamicsRestClient {
 		}
 	}
 
-	public HttpClient getNewHttpClient() throws Exception {
+	public DefaultHttpClient getNewHttpClient() throws Exception {
 		DefaultHttpClient defaultHttpClient;
 
 		//Manage https
@@ -101,7 +105,8 @@ public class AppDynamicsRestClient {
 	}
 
 	@SuppressWarnings("deprecation")
-	private static SingleClientConnManager initHttpsConnManager() throws Exception {
+	private static SingleClientConnManager initHttpsConnManager()
+			throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 		TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
 		X509HostnameVerifier allowAllHostnameVerifier = SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
 		SSLSocketFactory sslSocketFactory = new SSLSocketFactory(acceptingTrustStrategy, allowAllHostnameVerifier);

@@ -8,6 +8,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ public enum AppDynamicsAPI {
 
 	public static List<Metric> listMetric(final AppDynamicsRestClient client, final String url,
 	                                      final String application, final String path, final int durationMinutes) throws Exception {
-		HttpClient newHttpClient = client.getNewHttpClient();
+		DefaultHttpClient newHttpClient = client.getNewHttpClient();
 		StringBuilder urlBuilder = new StringBuilder();
 		try {
 			urlBuilder.append(url).append(API_APPLICATIONS_URL).append(application).append(METRIC_DATA)
@@ -51,9 +52,10 @@ public enum AppDynamicsAPI {
 				throw new AppDynamicsException("AppDynamics Rest error: " + response.getStatusLine().getStatusCode() + "-" + response.getStatusLine().getReasonPhrase());
 			}
 		} catch (IOException e) {
-			throw new AppDynamicsException(e.getMessage());
+			throw new AppDynamicsException(e);
 		} finally {
 			newHttpClient.getConnectionManager().shutdown();
+			newHttpClient.close();
 		}
 	}
 }
