@@ -17,6 +17,7 @@ import com.neotys.rest.dataexchange.model.Entry;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +25,13 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.neotys.action.argument.Arguments.getArgumentLogString;
 import static com.neotys.action.argument.Arguments.parseArguments;
-import static com.neotys.appdynamics.Constants.APP_DYNAMICS_LAST_EXECUTION_TIME;
-import static com.neotys.appdynamics.Constants.STATUS_CODE_BAD_CONTEXT;
-import static com.neotys.appdynamics.Constants.STATUS_CODE_INVALID_PARAMETER;
-import static com.neotys.appdynamics.Constants.STATUS_CODE_TECHNICAL_ERROR;
+import static com.neotys.appdynamics.Constants.*;
 import static java.util.stream.Collectors.toList;
 
 public class AppDynamicsActionEngine implements ActionEngine {
+
+	private static Map<String, Long> lastExecutionMap = new HashMap<>();
+
 	public SampleResult execute(final Context context, final List<ActionParameter> parameters) {
 		final SampleResult sampleResult = new SampleResult();
 		final StringBuilder requestContentBuilder = new StringBuilder();
@@ -68,16 +69,19 @@ public class AppDynamicsActionEngine implements ActionEngine {
 		// Check last execution time (and fail if called less than 45 seconds ago).
 		final String appDynamicsLastExecutionKey = String.format(APP_DYNAMICS_LAST_EXECUTION_TIME,
 				arguments.getAppDynamicURL(), arguments.getAppDynamicsApplicationName());
-		final Object appDynamicsLastExecutionTime = context.getCurrentVirtualUser().get(appDynamicsLastExecutionKey);
+		final Long appDynamicsLastExecutionTime = lastExecutionMap.get(appDynamicsLastExecutionKey);
+
 		final Long appDynamicsCurrentExecution = System.currentTimeMillis();
-		context.getCurrentVirtualUser().put(appDynamicsLastExecutionKey, appDynamicsCurrentExecution);
-		if (!(appDynamicsLastExecutionTime instanceof Long)) {
+		lastExecutionMap.put(appDynamicsLastExecutionKey, appDynamicsCurrentExecution);
+		if (appDynamicsLastExecutionTime == null) {
 			requestContentBuilder.append("(first execution).\n");
-		} else if ((Long) appDynamicsLastExecutionTime + 45 * 1000 > appDynamicsCurrentExecution) {
+		} else if (appDynamicsLastExecutionTime + 45 * 1000 > appDynamicsCurrentExecution) {
 			return newErrorResult(requestContentBuilder, context, Constants.STATUS_CODE_INSUFFICIENT_DELAY,
 					"Not enough delay between the two AppDynamics advanced action execution. Make sure to have at least 60 seconds pacing on the Actions container.", Optional.absent());
 		} else {
-			requestContentBuilder.append("(last execution was " + ((appDynamicsCurrentExecution - (Long) appDynamicsLastExecutionTime) / 1000) + " seconds ago)\n");
+			requestContentBuilder.append("(last execution was ")
+					.append((appDynamicsCurrentExecution - appDynamicsLastExecutionTime) / 1000)
+					.append(" seconds ago)\n");
 		}
 
 		//Init or get rest client
@@ -104,7 +108,7 @@ public class AppDynamicsActionEngine implements ActionEngine {
 			try {
 				final ContextBuilder contextBuilder = new ContextBuilder();
 				contextBuilder.hardware(Constants.NEOLOAD_CONTEXT_HARDWARE).location(Constants.NEOLOAD_CONTEXT_LOCATION).software(
-						Constants.NEOLOAD_CONTEXT_SOFTWARE).script("NewRelicInfrasfructureMonitoring" + System.currentTimeMillis());
+						Constants.NEOLOAD_CONTEXT_SOFTWARE).script("AppDynamicsInfrasfructureMonitoring" + System.currentTimeMillis());
 				dataExchangeAPIClient = DataExchangeAPIClientFactory.newClient(arguments.getDataExchangeApiUrl(),
 						contextBuilder.build(),
 						arguments.getDataExchangeApiKey().orNull());
