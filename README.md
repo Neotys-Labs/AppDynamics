@@ -30,8 +30,8 @@ This Advanced Action allows you to integrate [NeoLoad](https://www.neotys.com/ne
 
 Once installed, how to use in a given NeoLoad project:
 
-1. Create a User Path "appdynamics".
-2. Insert Custom action "AppDynamics Monitoring" in the **Actions** container (custom action is inside Advanced > APM > AppDynamics).
+1. Create an "appdynamics" User Path .
+2. Insert the "AppDynamics Monitoring" Custom Action in the **Actions** container (Custom Action is inside Advanced > APM > AppDynamics).
 
 <p align="center"><img src="/screenshots/AppDynamicsUserPath.png" alt="AppDynamics User Path" /></p>
 
@@ -39,11 +39,11 @@ Once installed, how to use in a given NeoLoad project:
 
 <p align="center"><img src="/screenshots/ActionsContainerPacing.png" alt="Action's Pacing" /></p>
 
-4. Select the **Actions** container and set the runtime parameters "Reset user session and emulate new browser between each iteration" to "No".
+4. Select the **Actions** container and set the "Reset user session and emulate new browser between each iteration" runtime parameters  to "No".
 
 <p align="center"><img src="/screenshots/ActionsContainerResetIterationNo.png" alt="Action's Runtime parameters" /></p>
 
-5. Create a Population "PopulationAppDynamics" which contains 100% of User Path "appdynamics".
+5. Create a Population "PopulationAppDynamics" that contains 100% of "appdynamics" User Path.
 
 <p align="center"><img src="/screenshots/AppDynamicsPopulation.png" alt="AppDynamics Population" /></p>
 
@@ -51,7 +51,7 @@ Once installed, how to use in a given NeoLoad project:
 
 <p align="center"><img src="/screenshots/AppDynamicsScenario.png" alt="Scenario" /></p>
 
-7. Do not use multiple load generators. Good practice should be to keep only the local one.
+7. Do not use multiple Load Generators. Good practice should be to keep only the local one.
 
 8. Verify to have a license with "Integration & Advanced Usage".
 
@@ -64,7 +64,7 @@ Once installed, how to use in a given NeoLoad project:
 | ---------------          | ----------------- |----------------- |
 | appDynamicsURL          | The URL of AppDynamics Server like:<br> 'https://\<accountId\>.saas.appdynamics.com' for Saas or<br>'http://\<hostname\>:8090' for OnPremise. |Required|
 | appDynamicsApplicationName          | The AppDynamics application name that will be monitored. |Required|
-| appDynamicsAPIKey          |  AppDynamics API access token. It's only available from AppDynamics 4.5 or newer. See more at [AppDynamics API Clients](https://docs.appdynamics.com/display/PRO45/API+Clients). |Optional|
+| appDynamicsAPIKey          |  AppDynamics API access token. It is only available from AppDynamics 4.5 or newer. See more at [AppDynamics API Clients](https://docs.appdynamics.com/display/PRO45/API+Clients). |Optional|
 | appDynamicsAccountName | AppDynamics Account Name. It appears in the URL when going on AppDynamics SaaS like 'https://**\<accountId\>**.saas.appdynamics.com/' or "customer1" for AppDynamics OnPremise.<br>Required when argument 'appDynamicsAPIKey' is absent or empty. |Optional|
 | appDynamicsUserName | AppDynamics User Name. It appears in **My Preference**/**My Account**.<br>Required when argument 'appDynamicsAPIKey' is absent or empty. |Optional|
 | appDynamicsPassword | AppDynamics Password.<br>Required when argument 'appDynamicsAPIKey' is absent or empty.|Optional|
@@ -81,14 +81,14 @@ Examples of AppDynamics configuration in NeoLoad:
 
 ## AppDynamics Metric Paths
 
-- You can monitor more than one metrics in the same AppDynamics action. Metric paths are separated by a line break.
+- You can monitor more than one metric in the same AppDynamics Action. Metric paths are separated by a line break.
 
 - How to get Metric Path from AppDynamics UI<br />
-    - Go to the monitored application
-    - Click Metric Browser
-    - Select a metric that you want to monitor
-    - Right click and select 'Copy Full Path'
-    - Paste it in the appDynamicsMetricPaths parameter in NeoLoad
+    - Go to the monitored application.
+    - Click Metric Browser.
+    - Select a metric that you want to monitor.
+    - Right click and select 'Copy Full Path'.
+    - Paste it in the appDynamicsMetricPaths parameter in NeoLoad.
     <p align="center"><img src="/screenshots/AppDynamicsMetricPaths.png" alt="AppDynamics Metric Paths" /></p>
 
 - You can use the wildcards in Metric Path. The maximum metric number per Metric Path sent from AppDynamics is limited to 200. See more details at [Metric Path Wildcards](https://docs.appdynamics.com/display/PRO45/Metric+and+Snapshot+API#MetricandSnapshotAPI-usingwildcards)
@@ -107,14 +107,14 @@ Examples of AppDynamics configuration in NeoLoad:
 ## Analyse results in NeoLoad
 
 - All the metrics retrieved from AppDynamics are available on the NeoLoad Controller (live during the test, and after the test is executed), in the **External Data** tab.
-- The most recent metric values sent from AppDynamics are still some minutes in the past compared to the current time. Some metric values are so missed at the end of NeoLoad tests.
+- The most recent metric values sent from AppDynamics are still a few minutes in the past compared to the current time. Some metric values are so missed at the end of NeoLoad tests.
 <p align="center"><img src="/screenshots/AppDynamicsNeoLoadExternalDataGraphs.png" alt="NeoLoad Graphs External Data" /></p>
 
 ## NeoLoad Error Codes
-* NL-APP_DYNAMICS_ACTION-01: Issue while parsing advanced action arguments.
+* NL-APP_DYNAMICS_ACTION-01: Issue while parsing Advanced Action arguments.
 * NL-APP_DYNAMICS_ACTION-02: Technical Error. See details for more information.
 * NL-APP_DYNAMICS_ACTION-03: Failed to retrieve metrics data from AppDynamics. See details for more information.
-* NL-APP_DYNAMICS_ACTION-04: Not enough delay between the two executions of the AppDynamics advanced action. Make sure to have at least 60 seconds pacing on the Actions container.  
+* NL-APP_DYNAMICS_ACTION-04: Not enough delay between the two executions of the AppDynamics Advanced Action. Make sure to have at least 60 seconds pacing on the Actions container.  
 
 ## ChangeLog
 * Version 1.0.0 (September 15, 2018): Initial release.
