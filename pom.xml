@@ -6,7 +6,7 @@
 
     <groupId>com.neotys.appdynamics</groupId>
     <artifactId>appdynamics-integration</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <properties>
         <swagger-core-version>1.5.12</swagger-core-version>
