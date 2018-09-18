@@ -4,7 +4,7 @@
 
 ## Overview
 
-This Advanced Action allows you to integrate [NeoLoad](https://www.neotys.com/neoload/overview) with [AppDynamics](https://www.appdynamics.com/) in order to correlate data from AppDynamics to NeoLoad. 
+This Advanced Action allows you to integrate [NeoLoad](https://www.neotys.com/neoload/overview) with [AppDynamics](https://www.appdynamics.com/) in order to correlate data from AppDynamics with NeoLoad. 
 
 
 | Property | Value |
