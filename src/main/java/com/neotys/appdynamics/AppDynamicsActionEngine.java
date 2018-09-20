@@ -129,8 +129,8 @@ public class AppDynamicsActionEngine implements ActionEngine {
 		final String appDynamicURL = arguments.getAppDynamicURL();
 
 		int duration = 1;
-		if (appDynamicsLastExecutionTime instanceof Long) {
-			duration = (int) Math.ceil((appDynamicsCurrentExecution - (Long) appDynamicsLastExecutionTime) / 60000D);
+		if (appDynamicsLastExecutionTime != null) {
+			duration = (int) Math.ceil((appDynamicsCurrentExecution - appDynamicsLastExecutionTime) / 60000D);
 		}
 
 		final List<Entry> entries = newArrayList();
