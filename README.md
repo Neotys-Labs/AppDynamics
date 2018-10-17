@@ -6,6 +6,8 @@
 
 This Advanced Action allows you to integrate [NeoLoad](https://www.neotys.com/neoload/overview) with [AppDynamics](https://www.appdynamics.com/) in order to correlate data from AppDynamics with NeoLoad. 
 
+You can specify which metrics you want to retrieve from NewRelic among all available metrics.
+
 
 | Property | Value |
 | ----------------    | ----------------   |
