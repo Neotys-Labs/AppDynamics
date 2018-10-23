@@ -27,7 +27,7 @@ public enum  Constants {
 	public static final String CUSTOM_ACTION_DISPLAY_NAME = "AppDynamics Monitoring";
 	public static final String CUSTOM_ACTION_DISPLAY_PATH = "APM/AppDynamics";
 
-	public static final Optional<String> CUSTOM_ACTION_MINIMUM_VERSION = Optional.of("6.3");
+	public static final Optional<String> CUSTOM_ACTION_MINIMUM_VERSION = Optional.of("6.7");
 	public static final Optional<String> CUSTOM_ACTION_MAXIMIM_VERSION = Optional.absent();
 
 	/*** NeoLoad error codes ***/
@@ -46,11 +46,10 @@ public enum  Constants {
 	public static final String APP_DYNAMICS_URL_DESCRIPTION = "AppDynamics URL.";
 	public static final String APP_DYNAMICS_METRIC_PATHS_DESCRIPTION = "AppDynamics Metric Paths separated by a line break.";
 	public static final String APP_DYNAMICS_PROXY_NAME_DESCRIPTION = "The NeoLoad proxy name to access AppDynamics.";
-	public static final String NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION = "The URL of the DataExchange server (located on the NeoLoad Controller).";
+	public static final String NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION = "Where the DataExchange server is located. Optional, by default it will be: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/.";
 	public static final String NEOLOAD_DATA_EXCHANGE_API_KEY_DESCRIPTION = "Identification key specified in NeoLoad for DataExchange server.";
 
 	public static final String APP_DYNAMICS_URL_DEFAULT_VALUE = "https://<account_name>.saas.appdynamics.com";
-	public static final String NEOLOAD_DATA_EXCHANGE_API_URL_DEFAULT_VALUE = "http://localhost:7400/DataExchange/v1/Service.svc/";
 	public static final String APP_DYNAMICS_METRIC_PATHS_DEFAULT_VALUE =
 			"Application Infrastructure Performance|*|Hardware Resources|CPU|User" + "\n" +
 			"Application Infrastructure Performance|*|Hardware Resources|CPU|System" + "\n" +
