@@ -17,6 +17,7 @@ import com.neotys.rest.dataexchange.model.Entry;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -134,9 +135,10 @@ public class AppDynamicsActionEngine implements ActionEngine {
 		}
 
 		final List<Entry> entries = newArrayList();
+		List<Metric> metrics = new ArrayList<>();
 		for (final String path : metricPaths.get()) {
 			try {
-				List<Metric> metrics = AppDynamicsAPI.listMetric(appDynamicsRestClient, appDynamicURL, applicationName, path, duration + 1);
+				metrics = AppDynamicsAPI.listMetric(appDynamicsRestClient, appDynamicURL, applicationName, path, duration + 1);
 				if (!metrics.isEmpty()) {
 					entries.addAll(metrics.stream()
 							.map(metric -> metric.buildEntries(applicationName))
@@ -158,6 +160,9 @@ public class AppDynamicsActionEngine implements ActionEngine {
 		} finally {
 			sampleResult.sampleEnd();
 		}
+
+		sampleResult.setRequestContent(requestContentBuilder.toString());
+		sampleResult.setResponseContent(metrics.toString());
 
 		return sampleResult;
 	}
