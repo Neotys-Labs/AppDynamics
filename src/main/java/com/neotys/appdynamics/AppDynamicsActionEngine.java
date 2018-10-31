@@ -107,7 +107,7 @@ public class AppDynamicsActionEngine implements ActionEngine {
 				contextBuilder.hardware(Constants.NEOLOAD_CONTEXT_HARDWARE).location(Constants.NEOLOAD_CONTEXT_LOCATION).software(
 						Constants.NEOLOAD_CONTEXT_SOFTWARE).script("AppDynamicsInfrasfructureMonitoring" + System.currentTimeMillis());
 
-				final String dataExchangeApiUrl = arguments.getDataExchangeApiUrl().or(getDefaultDataExchangeApiUrl(context));
+				final String dataExchangeApiUrl = arguments.getDataExchangeApiUrl().or(() -> getDefaultDataExchangeApiUrl(context));
 
 				if (context.getLogger().isDebugEnabled()) {
 					context.getLogger().debug("Data Exchange API URL used: " + dataExchangeApiUrl);
