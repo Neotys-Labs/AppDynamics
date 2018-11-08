@@ -18,12 +18,12 @@ You can specify which metrics you want to retrieve from NewRelic among all avail
 | AppDynamics | Tested with versions 4.4 and 4.5
 | Requirements | <ul><li>License FREE edition, or Enterprise edition, or Professional with Integration & Advanced Usage</li><li>AppDynamics account with Infrastructures and Plugins</li></ul>|
 | Bundled in NeoLoad | No |
-| Download Binaries    | See the [latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest)|
+| Download Binaries    | <ul><li>[latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest) is only compatible with NeoLoad from version 6.7</li><li> Use this [release](https://github.com/Neotys-Labs/AppDynamics/releases/tag/1.0.0) for previous NeoLoad versions|
 
 
 ## Installation
 
-1. Download the [latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest).
+1. Download the [latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest) for NeoLoad from version 6.7 or this [release](https://github.com/Neotys-Labs/AppDynamics/releases/tag/1.0.0) for previous NeoLoad versions.
 1. Read the NeoLoad documentation to see [How to install a custom Advanced Action](https://www.neotys.com/documents/doc/neoload/latest/en/html/#25928.htm).
 
 <p align="center"><img src="/screenshots/AppDynamicsActions.png" alt="AppDynamics Advanced Action" /></p>
