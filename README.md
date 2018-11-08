@@ -72,7 +72,7 @@ Once installed, how to use in a given NeoLoad project:
 | appDynamicsPassword | AppDynamics Password.<br>Required when argument 'appDynamicsAPIKey' is absent or empty.|Optional|
 | appDynamicsMetricPaths | Specify the list of the AppDynamics metric paths (separated by a line break) to retrieve. See more details at [Metric Paths](#appDynamics-metric-paths)|Optional|
 | proxyName | NeoLoad proxy name to access AppDynamics. |Optional|
-| dataExchangeApiUrl          | Where the DataExchange server is located. Optional, by default it will be: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/ |Optional|
+| dataExchangeApiUrl          | Where the DataExchange server is located. Optional, by default it is: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/ |Optional|
 | dataExchangeApiKey            | Identification key specified in NeoLoad. |Optional|
 
 Examples of AppDynamics configuration in NeoLoad:

@@ -46,7 +46,7 @@ public enum  Constants {
 	public static final String APP_DYNAMICS_URL_DESCRIPTION = "AppDynamics URL.";
 	public static final String APP_DYNAMICS_METRIC_PATHS_DESCRIPTION = "AppDynamics Metric Paths separated by a line break.";
 	public static final String APP_DYNAMICS_PROXY_NAME_DESCRIPTION = "The NeoLoad proxy name to access AppDynamics.";
-	public static final String NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION = "Where the DataExchange server is located. Optional, by default it will be: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/.";
+	public static final String NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION = "Where the DataExchange server is located. Optional, by default it is: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/.";
 	public static final String NEOLOAD_DATA_EXCHANGE_API_KEY_DESCRIPTION = "Identification key specified in NeoLoad for DataExchange server.";
 
 	public static final String APP_DYNAMICS_URL_DEFAULT_VALUE = "https://<account_name>.saas.appdynamics.com";
