@@ -53,9 +53,6 @@ public class AppDynamicsActionEngine implements ActionEngine {
 		if (isNullOrEmpty(arguments.getAppDynamicURL())) {
 			return newErrorResult(requestContentBuilder, context, STATUS_CODE_INVALID_PARAMETER, "The AppDynamics URL must be not empty.", Optional.absent());
 		}
-		if (isNullOrEmpty(arguments.getDataExchangeApiUrl())) {
-			return newErrorResult(requestContentBuilder, context, STATUS_CODE_INVALID_PARAMETER, "The NeoLoad data exchange URL must be not empty.", Optional.absent());
-		}
 		if (isNullOrEmpty(arguments.getAppDynamicsApplicationName())) {
 			return newErrorResult(requestContentBuilder, context, STATUS_CODE_INVALID_PARAMETER, "The AppDynamics application name must be not empty.", Optional.absent());
 		}
@@ -110,7 +107,14 @@ public class AppDynamicsActionEngine implements ActionEngine {
 				final ContextBuilder contextBuilder = new ContextBuilder();
 				contextBuilder.hardware(Constants.NEOLOAD_CONTEXT_HARDWARE).location(Constants.NEOLOAD_CONTEXT_LOCATION).software(
 						Constants.NEOLOAD_CONTEXT_SOFTWARE).script("AppDynamicsInfrasfructureMonitoring" + System.currentTimeMillis());
-				dataExchangeAPIClient = DataExchangeAPIClientFactory.newClient(arguments.getDataExchangeApiUrl(),
+
+				final String dataExchangeApiUrl = arguments.getDataExchangeApiUrl().or(() -> getDefaultDataExchangeApiUrl(context));
+
+				if (context.getLogger().isDebugEnabled()) {
+					context.getLogger().debug("Data Exchange API URL used: " + dataExchangeApiUrl);
+				}
+
+				dataExchangeAPIClient = DataExchangeAPIClientFactory.newClient(dataExchangeApiUrl,
 						contextBuilder.build(),
 						arguments.getDataExchangeApiKey().orNull());
 				context.getCurrentVirtualUser().put(Constants.NL_DATA_EXCHANGE_API_CLIENT, dataExchangeAPIClient);
@@ -165,6 +169,10 @@ public class AppDynamicsActionEngine implements ActionEngine {
 		sampleResult.setResponseContent(metrics.toString());
 
 		return sampleResult;
+	}
+
+	private String getDefaultDataExchangeApiUrl(final Context context) {
+		return "http://" + context.getControllerIp() + ":7400/DataExchange/v1/Service.svc/";
 	}
 
 	private boolean hasAuthenticationInfo(final AppDynamicsActionArguments arguments) {

@@ -10,7 +10,6 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class AppDynamicsActionArguments {
 	private final String appDynamicURL;
-	private final String dataExchangeApiUrl;
 	private final String appDynamicsApplicationName;
 
 	private final Optional<String> appDynamicAPIKey;
@@ -19,13 +18,13 @@ public class AppDynamicsActionArguments {
 	private final Optional<String> appDynamicPassword;
 	private final Optional<List<String>> appDynamicMetricPaths;
 	private final Optional<String> proxyName;
+	private final Optional<String> dataExchangeApiUrl;
 	private final Optional<String> dataExchangeApiKey;
 
 
 	public AppDynamicsActionArguments(final Map<String, Optional<String>> parsedArgs) throws IllegalArgumentException {
 		// Required
 		this.appDynamicURL = parsedArgs.get(AppDynamicsOption.AppDynamicsURL.getName()).or("");
-		this.dataExchangeApiUrl = parsedArgs.get(AppDynamicsOption.NeoLoadDataExchangeApiUrl.getName()).or("");
 		this.appDynamicsApplicationName = parsedArgs.get(AppDynamicsOption.AppDynamicsApplicationName.getName()).or("");
 
 		// Optional
@@ -36,6 +35,7 @@ public class AppDynamicsActionArguments {
 		this.appDynamicMetricPaths = Optional.of(Splitter.on("\n").omitEmptyStrings()
 				.splitToList(parsedArgs.get(AppDynamicsOption.AppDynamicsMetricPaths.getName()).or("")));
 		this.proxyName = getArgumentValue(parsedArgs, AppDynamicsOption.AppDynamicsProxyName);
+		this.dataExchangeApiUrl =  getArgumentValue(parsedArgs, AppDynamicsOption.NeoLoadDataExchangeApiUrl);
 		this.dataExchangeApiKey = getArgumentValue(parsedArgs, AppDynamicsOption.NeoLoadDataExchangeApiKey);
 	}
 
@@ -51,7 +51,7 @@ public class AppDynamicsActionArguments {
 		return appDynamicURL;
 	}
 
-	public String getDataExchangeApiUrl() {
+	public Optional<String> getDataExchangeApiUrl() {
 		return dataExchangeApiUrl;
 	}
 

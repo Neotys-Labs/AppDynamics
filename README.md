@@ -18,12 +18,12 @@ You can specify which metrics you want to retrieve from AppDynamics among all av
 | AppDynamics | Tested with versions 4.4 and 4.5
 | Requirements | <ul><li>License FREE edition, or Enterprise edition, or Professional with Integration & Advanced Usage</li><li>AppDynamics account with Infrastructures and Plugins</li></ul>|
 | Bundled in NeoLoad | No |
-| Download Binaries    | See the [latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest)|
+| Download Binaries    | <ul><li>[latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest) is only compatible with NeoLoad from version 6.7</li><li> Use this [release](https://github.com/Neotys-Labs/AppDynamics/releases/tag/1.0.0) for previous NeoLoad versions</li></ul>|
 
 
 ## Installation
 
-1. Download the [latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest).
+1. Download the [latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest) for NeoLoad from version 6.7 or this [release](https://github.com/Neotys-Labs/AppDynamics/releases/tag/1.0.0) for previous NeoLoad versions.
 1. Read the NeoLoad documentation to see [How to install a custom Advanced Action](https://www.neotys.com/documents/doc/neoload/latest/en/html/#25928.htm).
 
 <p align="center"><img src="/screenshots/AppDynamicsActions.png" alt="AppDynamics Advanced Action" /></p>
@@ -72,7 +72,7 @@ Once installed, how to use in a given NeoLoad project:
 | appDynamicsPassword | AppDynamics Password.<br>Required when argument 'appDynamicsAPIKey' is absent or empty.|Optional|
 | appDynamicsMetricPaths | Specify the list of the AppDynamics metric paths (separated by a line break) to retrieve. See more details at [Metric Paths](#appDynamics-metric-paths)|Optional|
 | proxyName | NeoLoad proxy name to access AppDynamics. |Optional|
-| dataExchangeApiUrl          | URL of the DataExchange server (located on the NeoLoad Controller). See more details to get NeoLoad API information in NeoLoad preferences at [Project Preferences / REST API](https://www.neotys.com/documents/doc/neoload/latest/en/html/#7652.htm). |Required|
+| dataExchangeApiUrl          | Where the DataExchange server is located. Optional, by default it is: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/ |Optional|
 | dataExchangeApiKey            | Identification key specified in NeoLoad. |Optional|
 
 Examples of AppDynamics configuration in NeoLoad:

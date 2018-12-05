@@ -22,7 +22,6 @@ import static com.neotys.appdynamics.Constants.APP_DYNAMICS_URL_DEFAULT_VALUE;
 import static com.neotys.appdynamics.Constants.APP_DYNAMICS_URL_DESCRIPTION;
 import static com.neotys.appdynamics.Constants.APP_DYNAMICS_USER_NAME_DESCRIPTION;
 import static com.neotys.appdynamics.Constants.NEOLOAD_DATA_EXCHANGE_API_KEY_DESCRIPTION;
-import static com.neotys.appdynamics.Constants.NEOLOAD_DATA_EXCHANGE_API_URL_DEFAULT_VALUE;
 import static com.neotys.appdynamics.Constants.NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION;
 import static com.neotys.extensions.action.ActionParameter.Type.PASSWORD;
 import static com.neotys.extensions.action.ActionParameter.Type.TEXT;
@@ -36,7 +35,7 @@ public enum AppDynamicsOption implements Option {
 	AppDynamicsPassword("appDynamicsPassword", 					Optional, True, PASSWORD, "", APP_DYNAMICS_PASSWORD_DESCRIPTION, ALWAYS_VALID),
 	AppDynamicsMetricPaths("appDynamicsMetricPaths", 			Required, True, TEXT, APP_DYNAMICS_METRIC_PATHS_DEFAULT_VALUE, APP_DYNAMICS_METRIC_PATHS_DESCRIPTION, NON_EMPTY),
 	AppDynamicsProxyName("proxyName", 							Optional, False, TEXT, "", APP_DYNAMICS_PROXY_NAME_DESCRIPTION, ALWAYS_VALID),
-	NeoLoadDataExchangeApiUrl("dataExchangeApiUrl", 			Required, True, TEXT, NEOLOAD_DATA_EXCHANGE_API_URL_DEFAULT_VALUE, NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION, NON_EMPTY),
+	NeoLoadDataExchangeApiUrl("dataExchangeApiUrl", 			Optional, False, TEXT, "", NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION, ALWAYS_VALID),
 	NeoLoadDataExchangeApiKey("dataExchangeApiKey", 			Optional, False, TEXT, "", NEOLOAD_DATA_EXCHANGE_API_KEY_DESCRIPTION, ALWAYS_VALID);
 
 	private final String name;
