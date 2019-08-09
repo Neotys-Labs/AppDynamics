@@ -118,5 +118,14 @@ Examples of AppDynamics configuration in NeoLoad:
 * NL-APP_DYNAMICS_ACTION-03: Failed to retrieve metrics data from AppDynamics. See details for more information.
 * NL-APP_DYNAMICS_ACTION-04: Not enough delay between the two executions of the AppDynamics Advanced Action. Make sure to have at least 60 seconds pacing on the Actions container.  
 
+## Troubleshooting tips
+To ensure connectivity and test authorization to AppDynamics API server, you can run **curl** command:
+* For usage of token (**appDynamicsAPIKey**): 
+
+`curl -H "Authorization:Bearer <token>" https://<accountName>.saas.appdynamics.com/controller/rest/applications?output=JSON`
+* For usage of username and password (**appDynamicsUserName** and **appDynamicsPassword**): 
+
+`curl --user <username>@<accountName>:<password> https://<accountName>.saas.appdynamics.com/controller/rest/applications?output=JSON`
+
 ## ChangeLog
 * Version 1.0.0 (September 15, 2018): Initial release.
