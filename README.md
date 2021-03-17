@@ -66,7 +66,7 @@ Once installed, how to use in a given NeoLoad project:
 | ---------------          | ----------------- |----------------- |
 | appDynamicsURL          | The URL of AppDynamics Server like:<br> 'https://\<accountId\>.saas.appdynamics.com' for Saas or<br>'http://\<hostname\>:8090' for OnPremise. |Required|
 | appDynamicsApplicationName          | The AppDynamics application name that will be monitored. |Required|
-| appDynamicsAPIKey          |  AppDynamics API access token. It is only available from AppDynamics 4.5 or newer. See more at [AppDynamics API Clients](https://docs.appdynamics.com/display/PRO45/API+Clients). |Optional|
+| appDynamicsAPIKey          |  AppDynamics API access token. It is only available from AppDynamics 4.5 or newer. See more at [AppDynamics API Clients](https://docs.appdynamics.com/display/PRO45/API+Clients). <br>Mandatory for SSO SaaS usage. |Optional|
 | appDynamicsAccountName | AppDynamics Account Name. It appears in the URL when going on AppDynamics SaaS like 'https://**\<accountId\>**.saas.appdynamics.com/' or "customer1" for AppDynamics OnPremise.<br>Required when argument 'appDynamicsAPIKey' is absent or empty. |Optional|
 | appDynamicsUserName | AppDynamics User Name. It appears in **My Preference**/**My Account**.<br>Required when argument 'appDynamicsAPIKey' is absent or empty. |Optional|
 | appDynamicsPassword | AppDynamics Password.<br>Required when argument 'appDynamicsAPIKey' is absent or empty.|Optional|
@@ -76,8 +76,10 @@ Once installed, how to use in a given NeoLoad project:
 | dataExchangeApiKey            | Identification key specified in NeoLoad. |Optional|
 
 Examples of AppDynamics configuration in NeoLoad:
-- For **SaaS** 
+- For **SaaS without SSO** 
     <p align="center"><img src="/screenshots/AppDynamicsConfigurationSaaS.png" alt="AppDynamics Configuration Saas" /></p>
+- For **SaaS with SSO**
+    <p align="center"><img src="/screenshots/AppDynamicsConfigurationSaaSWithSSO.png" alt="AppDynamics Configuration Saas with SSO" /></p>
 - For **OnPremise**
     <p align="center"><img src="/screenshots/AppDynamicsConfigurationOnPremise.png" alt="AppDynamics Configuration OnPremise" /></p>
 
@@ -127,5 +129,9 @@ To ensure connectivity and test authorization to AppDynamics API server, you can
 
 `curl --user <username>@<accountName>:<password> https://<accountName>.saas.appdynamics.com/controller/rest/applications?output=JSON`
 
+When configuring SSO SaaS, the `HTTP 401 Unauthorized` error is returned if an API token has not been provided. Please specify a valid **appDynamicsAPIKey** token in the parameters of the AppDynamics action.
+
 ## ChangeLog
 * Version 1.0.0 (September 15, 2018): Initial release.
+* Version 2.0.0 (December 5, 2018): Make the **dataExchangeApiUrl** parameter optional.
+* Version 2.0.1 (February 5, 2019): Update a dependency.
