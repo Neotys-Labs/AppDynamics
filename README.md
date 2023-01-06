@@ -18,7 +18,7 @@ You can specify which metrics you want to retrieve from AppDynamics among all av
 | AppDynamics | Tested with versions 4.4 and 4.5
 | Requirements | <ul><li>License FREE edition, or Enterprise edition, or Professional with Integration & Advanced Usage</li><li>AppDynamics account with Infrastructures and Plugins</li></ul>|
 | Bundled in NeoLoad | No |
-| Download Binaries    | <ul><li>[latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest) is only compatible with NeoLoad from version 6.7</li><li> Use this [release](https://github.com/Neotys-Labs/AppDynamics/releases/tag/1.0.0) for previous NeoLoad versions</li></ul>|
+| Download Binaries    | <ul><li>[latest release](https://github.com/Neotys-Labs/AppDynamics/releases/latest) is only compatible with NeoLoad from version 9.1</li><li> Use [this release 2.0.1](https://github.com/Neotys-Labs/AppDynamics/releases/tag/Neotys-Labs%2FAppDynamics.git-2.0.1) for NeoLoad 6.7 to 9.0</li><li> Use [this release 1.0.0](https://github.com/Neotys-Labs/AppDynamics/releases/tag/1.0.0) for previous NeoLoad versions</li></ul> |
 
 
 ## Installation
@@ -132,6 +132,7 @@ To ensure connectivity and test authorization to AppDynamics API server, you can
 When configuring SSO SaaS, the `HTTP 401 Unauthorized` error is returned if an API token has not been provided. Please specify a valid **appDynamicsAPIKey** token in the parameters of the AppDynamics action.
 
 ## ChangeLog
-* Version 1.0.0 (September 15, 2018): Initial release.
-* Version 2.0.0 (December 5, 2018): Make the **dataExchangeApiUrl** parameter optional.
+* Version 3.0.0 (January 10, 2022): Update version of NeoLoad DataExchange API client that is now compatible with java modules. Bump dependencies.
 * Version 2.0.1 (February 5, 2019): Update a dependency.
+* Version 2.0.0 (December 5, 2018): Make the **dataExchangeApiUrl** parameter optional.
+* Version 1.0.0 (September 15, 2018): Initial release.

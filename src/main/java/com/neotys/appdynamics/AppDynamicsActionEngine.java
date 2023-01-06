@@ -11,7 +11,7 @@ import com.neotys.extensions.action.engine.Context;
 import com.neotys.extensions.action.engine.Proxy;
 import com.neotys.extensions.action.engine.SampleResult;
 import com.neotys.rest.dataexchange.client.DataExchangeAPIClient;
-import com.neotys.rest.dataexchange.client.DataExchangeAPIClientFactory;
+import com.neotys.rest.dataexchange.client.olingo.DataExchangeAPIClientFactory;
 import com.neotys.rest.dataexchange.model.ContextBuilder;
 import com.neotys.rest.dataexchange.model.Entry;
 
