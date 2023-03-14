@@ -74,6 +74,7 @@ Once installed, how to use in a given NeoLoad project:
 | proxyName | NeoLoad proxy name to access AppDynamics. |Optional|
 | dataExchangeApiUrl          | Where the DataExchange server is located. Optional, by default it is: http://${NL-ControllerIp}:7400/DataExchange/v1/Service.svc/ |Optional|
 | dataExchangeApiKey            | Identification key specified in NeoLoad. |Optional|
+| tls.insecure            | By default set to false, it only accept TLS valid certificates. Set to true to ignore TLS certificates issues. |Optional|
 
 Examples of AppDynamics configuration in NeoLoad:
 - For **SaaS without SSO** 

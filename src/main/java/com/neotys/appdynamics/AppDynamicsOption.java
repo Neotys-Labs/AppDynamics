@@ -6,6 +6,7 @@ import com.neotys.extensions.action.ActionParameter;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.neotys.action.argument.DefaultArgumentValidator.ALWAYS_VALID;
+import static com.neotys.action.argument.DefaultArgumentValidator.BOOLEAN_VALIDATOR;
 import static com.neotys.action.argument.DefaultArgumentValidator.NON_EMPTY;
 import static com.neotys.action.argument.Option.AppearsByDefault.False;
 import static com.neotys.action.argument.Option.AppearsByDefault.True;
@@ -23,6 +24,7 @@ import static com.neotys.appdynamics.Constants.APP_DYNAMICS_URL_DESCRIPTION;
 import static com.neotys.appdynamics.Constants.APP_DYNAMICS_USER_NAME_DESCRIPTION;
 import static com.neotys.appdynamics.Constants.NEOLOAD_DATA_EXCHANGE_API_KEY_DESCRIPTION;
 import static com.neotys.appdynamics.Constants.NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION;
+import static com.neotys.appdynamics.Constants.TLS_INSECURE_KEY_DESCRIPTION;
 import static com.neotys.extensions.action.ActionParameter.Type.PASSWORD;
 import static com.neotys.extensions.action.ActionParameter.Type.TEXT;
 
@@ -36,7 +38,8 @@ public enum AppDynamicsOption implements Option {
 	AppDynamicsMetricPaths("appDynamicsMetricPaths", 			Required, True, TEXT, APP_DYNAMICS_METRIC_PATHS_DEFAULT_VALUE, APP_DYNAMICS_METRIC_PATHS_DESCRIPTION, NON_EMPTY),
 	AppDynamicsProxyName("proxyName", 							Optional, False, TEXT, "", APP_DYNAMICS_PROXY_NAME_DESCRIPTION, ALWAYS_VALID),
 	NeoLoadDataExchangeApiUrl("dataExchangeApiUrl", 			Optional, False, TEXT, "", NEOLOAD_DATA_EXCHANGE_API_URL_DESCRIPTION, ALWAYS_VALID),
-	NeoLoadDataExchangeApiKey("dataExchangeApiKey", 			Optional, False, TEXT, "", NEOLOAD_DATA_EXCHANGE_API_KEY_DESCRIPTION, ALWAYS_VALID);
+	NeoLoadDataExchangeApiKey("dataExchangeApiKey", 			Optional, False, TEXT, "", NEOLOAD_DATA_EXCHANGE_API_KEY_DESCRIPTION, ALWAYS_VALID),
+	TLSInsecure("tls.insecure", 			           			Optional, False, TEXT, "", TLS_INSECURE_KEY_DESCRIPTION, BOOLEAN_VALIDATOR);
 
 	private final String name;
 	private final Option.OptionalRequired optionalRequired;

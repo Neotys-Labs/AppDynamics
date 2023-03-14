@@ -20,6 +20,7 @@ public class AppDynamicsActionArguments {
 	private final Optional<String> proxyName;
 	private final Optional<String> dataExchangeApiUrl;
 	private final Optional<String> dataExchangeApiKey;
+	private final boolean tlsInsecure;
 
 
 	public AppDynamicsActionArguments(final Map<String, Optional<String>> parsedArgs) throws IllegalArgumentException {
@@ -37,6 +38,7 @@ public class AppDynamicsActionArguments {
 		this.proxyName = getArgumentValue(parsedArgs, AppDynamicsOption.AppDynamicsProxyName);
 		this.dataExchangeApiUrl =  getArgumentValue(parsedArgs, AppDynamicsOption.NeoLoadDataExchangeApiUrl);
 		this.dataExchangeApiKey = getArgumentValue(parsedArgs, AppDynamicsOption.NeoLoadDataExchangeApiKey);
+		this.tlsInsecure = getArgumentValue(parsedArgs, AppDynamicsOption.TLSInsecure).transform(Boolean::parseBoolean).or(false);
 	}
 
 	private Optional<String> getArgumentValue(final Map<String, Optional<String>> parsedArgs, final AppDynamicsOption appDynamicsOption) {
@@ -85,5 +87,9 @@ public class AppDynamicsActionArguments {
 
 	public Optional<String> getDataExchangeApiKey() {
 		return dataExchangeApiKey;
+	}
+
+	public boolean isTlsInsecure() {
+		return tlsInsecure;
 	}
 }

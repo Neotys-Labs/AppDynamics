@@ -40,6 +40,8 @@ public class AppDynamicsRestClient {
 	private final Optional<String> password;
 	private final Optional<Proxy> proxy;
 	private final Logger logger;
+
+	private final boolean tlsInsecure;
 	private List<Header> headers;
 
 	public AppDynamicsRestClient(final AppDynamicsActionArguments appDynamicsActionArguments, final Optional<Proxy> proxy, final Logger logger) {
@@ -50,6 +52,7 @@ public class AppDynamicsRestClient {
 		this.url = appDynamicsActionArguments.getAppDynamicURL();
 		this.proxy = proxy;
 		this.logger = logger;
+		this.tlsInsecure = appDynamicsActionArguments.isTlsInsecure();
 		initHeaders();
 	}
 
@@ -105,10 +108,10 @@ public class AppDynamicsRestClient {
 	}
 
 	@SuppressWarnings("deprecation")
-	private static SingleClientConnManager initHttpsConnManager()
+	private SingleClientConnManager initHttpsConnManager()
 			throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
 		TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
-		X509HostnameVerifier allowAllHostnameVerifier = SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
+		X509HostnameVerifier allowAllHostnameVerifier = tlsInsecure ? SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER : SSLSocketFactory.STRICT_HOSTNAME_VERIFIER;
 		SSLSocketFactory sslSocketFactory = new SSLSocketFactory(acceptingTrustStrategy, allowAllHostnameVerifier);
 		final SchemeRegistry registry = new SchemeRegistry();
 		registry.register(new Scheme("http", 80, PlainSocketFactory.getSocketFactory()));
