@@ -10,13 +10,13 @@ import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.HttpClient;
 import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLContextBuilder;
+import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -28,7 +28,6 @@ import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,10 +108,13 @@ public class AppDynamicsRestClient {
 
 	@SuppressWarnings("deprecation")
 	private SingleClientConnManager initHttpsConnManager()
-			throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-		TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
+			throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+		final SSLContextBuilder sslContextBuilder = SSLContexts.custom();
+		if (tlsInsecure) {
+			sslContextBuilder.loadTrustMaterial(null, (cert, authType) -> true);
+		}
 		X509HostnameVerifier allowAllHostnameVerifier = tlsInsecure ? SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER : SSLSocketFactory.STRICT_HOSTNAME_VERIFIER;
-		SSLSocketFactory sslSocketFactory = new SSLSocketFactory(acceptingTrustStrategy, allowAllHostnameVerifier);
+		SSLSocketFactory sslSocketFactory = new SSLSocketFactory(sslContextBuilder.build(), allowAllHostnameVerifier);
 		final SchemeRegistry registry = new SchemeRegistry();
 		registry.register(new Scheme("http", 80, PlainSocketFactory.getSocketFactory()));
 		registry.register(new Scheme("https", 443, sslSocketFactory));
