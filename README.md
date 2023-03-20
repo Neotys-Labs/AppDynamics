@@ -136,3 +136,4 @@ When configuring SSO SaaS, the `HTTP 401 Unauthorized` error is returned if an A
 * Version 1.0.0 (September 15, 2018): Initial release.
 * Version 2.0.0 (December 5, 2018): Make the **dataExchangeApiUrl** parameter optional.
 * Version 2.0.1 (February 5, 2019): Update a dependency.
+* Version 2.1.0 (March 2023): For security purpose, do not ignore TLS certificates issues (use parameter **tls.insecure** for backward compatibility).
